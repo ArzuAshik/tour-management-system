@@ -17,7 +17,7 @@ exports.getAllTours = async (req, res, next) => {
             .sort(sortBy).skip((Number(page) - 1) * Number(limit)).limit(Number(limit));
 
         res.status(200).json({
-            totalPage: 0,
+            // totalPage: 0,
             currentPage: page,
             data
         });

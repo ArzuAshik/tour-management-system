@@ -1,12 +1,11 @@
+require("colors");
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
-const dbConnect = require("./utils/dbConnect");
 const toolsRoutes = require("./routes/v1/tours.route.js");
 const errorHandler = require("./middleware/errorHandler");
-// const { connectToServer } = require("./utils/dbConnect");
 const mongoose = require("mongoose");
 
 app.use(cors());
@@ -25,14 +24,14 @@ app.set("view engine", "ejs");
 // });
 
 // db connection
-mongoose.connect('mongodb://localhost:27017/tours')
+mongoose.connect(process.env.DATABASE)
   .then(() => {
     console.log("DB Connected".yellow.bold)
   }).catch(err => {
     console.log(err)
     console.log("connection Failed!".red.bold);
   });
-  
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`.blue);
 });
