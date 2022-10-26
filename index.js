@@ -24,12 +24,14 @@ app.set("view engine", "ejs");
 // });
 
 // db connection
-mongoose.connect(process.env.DATABASE)
+const key = "mongodb+srv://arzu:AR12345678@cluster0.e2upviu.mongodb.net/?retryWrites=true&w=majority"
+// process.env.DATABASE
+mongoose.connect(key)
   .then(() => {
     console.log("DB Connected".yellow.bold)
   }).catch(err => {
-    console.log(err)
-    console.log("connection Failed!".red.bold);
+    console.log("error message",err)
+    console.log("DB Connection Failed :'(".red.bold);
   });
 
 app.listen(port, () => {
