@@ -24,9 +24,7 @@ app.set("view engine", "ejs");
 // });
 
 // db connection
-const key = "mongodb+srv://arzu:AR12345678@cluster0.e2upviu.mongodb.net/?retryWrites=true&w=majority"
-// process.env.DATABASE
-mongoose.connect(key)
+mongoose.connect(process.env.DATABASE)
   .then(() => {
     console.log("DB Connected".yellow.bold)
   }).catch(err => {
